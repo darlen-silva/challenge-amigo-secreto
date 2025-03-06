@@ -2,6 +2,14 @@
 
 const friends = [];
 
+function renderFriend(arr) {
+	list = ""
+	for (let index = 0; index < arr.length; index++) {
+		list = list.concat(`<li>${arr[index]}</li>`);
+	}
+	return list;
+}
+
 function adicionarAmigo() {
 	let friend = document.querySelector('input').value.trim();
 
@@ -9,7 +17,7 @@ function adicionarAmigo() {
 		friends.push(friend);
 
 		let myFriends = document.getElementById("listaAmigos");
-		myFriends.innerHTML = myFriends.innerHTML.concat(`<li>${friend}</li>`);
+		myFriends.innerHTML = renderFriend(friends);
 		document.querySelector('input').value = '';
 	} else {
 		if (friend.length == 0) {
@@ -23,7 +31,7 @@ function adicionarAmigo() {
 function sortearAmigo() {
 	let randomFriend = Math.floor(Math.random() * friends.length);
 	const winnerFriend = document.getElementById("resultado");
-	winnerFriend.innerHTML = `The choosed friend is: ${friends[randomFriend]}`;
+	winnerFriend.innerHTML = `O amigo escolhido foi: ${friends[randomFriend]}`;
 	console.log(friends[randomFriend]);
 }
 
